@@ -9,14 +9,15 @@ require "faker"
 
 puts "Creating restaurants..."
 
+category_list = %w[chinese italian japanese french belgian]
 10.times do
   restaurant = Restaurant.new(
     name: Faker::Commerce.product_name,
     address: Faker::Address.street_address,
-    phone_number: Faker::PhoneNumber,
-    category: Faker::Restaurant.type
+    phone_number: Faker::PhoneNumber.cell_phone,
+    category: category_list.sample
   )
-  restaurant.save
+  restaurant.save!
 end
 
 puts "Finished!"
